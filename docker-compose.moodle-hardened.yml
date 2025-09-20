@@ -36,10 +36,10 @@ services:
 
   mariadb:
     # Alternative registries (use one):
-    # image: ghcr.io/bitnami/mariadb:11.4                 # GitHub Container Registry
-    # image: quay.io/bitnami/mariadb:11.4                 # Quay.io
-    # image: public.ecr.aws/bitnami/mariadb:11.4          # AWS ECR Public
-    image: registry.hub.docker.com/bitnami/mariadb:11.4   # Docker Hub direct
+    # image: ghcr.io/bitnami/mariadb:12.0.2                 # GitHub Container Registry
+    # image: quay.io/bitnami/mariadb:12.0.2                 # Quay.io
+    # image: public.ecr.aws/bitnami/mariadb:12.0.2          # AWS ECR Public
+    image: registry.hub.docker.com/bitnami/mariadb:12.0.2   # Docker Hub direct
     container_name: moodle-mariadb
     restart: unless-stopped
     env_file:

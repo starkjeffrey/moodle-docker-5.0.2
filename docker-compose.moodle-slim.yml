@@ -41,8 +41,8 @@ services:
           memory: 128M
 
   mariadb:
-    # Official MariaDB Alpine - 100-150MB (vs 400-500MB Bitnami)
-    image: mariadb:11.4-alpine
+    # Official MariaDB - using Bitnami for consistency
+    image: registry.hub.docker.com/bitnami/mariadb:12.0.2
     container_name: moodle-mariadb-slim
     restart: unless-stopped
     environment:
