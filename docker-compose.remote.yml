@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v3.0
+    container_name: moodle-traefik
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.email=admin@example.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--log.level=INFO"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/letsencrypt:/letsencrypt
+    networks:
+      - moodle-network
+
+  mariadb:
+    image: registry.hub.docker.com/bitnami/mariadb:11.4
+    container_name: moodle-mariadb
+    restart: unless-stopped
+    env_file:
+      - .envs/.mariadb/mariadb.env
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+    networks:
+      - moodle-network
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  moodle:
+    image: registry.hub.docker.com/bitnami/moodle:5.0.2
+    container_name: moodle-app
+    restart: unless-stopped
+    env_file:
+      - .envs/.moodle/moodle.env
+    environment:
+      # Use your domain or IP here
+      - MOODLE_HOST=96.9.94.128
+      - MOODLE_REVERSEPROXY=true
+      - MOODLE_SSLPROXY=true
+    volumes:
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - moodle-network
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.moodle.rule=Host(`96.9.94.128`) || Host(`96-9-94-128.nip.io`)"
+      - "traefik.http.routers.moodle.entrypoints=web"
+      - "traefik.http.routers.moodle.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # HTTPS router
+      - "traefik.http.routers.moodle-secure.rule=Host(`96.9.94.128`) || Host(`96-9-94-128.nip.io`)"
+      - "traefik.http.routers.moodle-secure.entrypoints=websecure"
+      - "traefik.http.routers.moodle-secure.tls=true"
+      - "traefik.http.routers.moodle-secure.tls.certresolver=letsencrypt"
+      - "traefik.http.services.moodle.loadbalancer.server.port=8080"
+    healthcheck:
+      test: ['CMD-SHELL', 'php -r "exit(file_get_contents(\"http://localhost:8080/\") ? 0 : 1);"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
+
+networks:
+  moodle-network:
+    driver: bridge

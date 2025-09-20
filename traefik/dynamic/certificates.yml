@@ -1,0 +1,9 @@
+tls:
+  certificates:
+    - certFile: /certs/moodle.local.crt
+      keyFile: /certs/moodle.local.key
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /certs/moodle.local.crt
+        keyFile: /certs/moodle.local.key

@@ -122,7 +122,7 @@ services:
     networks:
       - moodle-network
     healthcheck:
-      test: ['CMD-SHELL', 'curl -f http://localhost:8080/ || exit 1']
+      test: ['CMD-SHELL', 'php -r "exit(file_get_contents(\"http://localhost:8080/\") ? 0 : 1);"']
       interval: 30s
       timeout: 10s
       retries: 5
