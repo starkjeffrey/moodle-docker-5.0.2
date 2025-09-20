@@ -1,0 +1,130 @@
+# High-performance Moodle with Nginx and PHP-FPM
+FROM alpine:3.19 AS moodle-nginx
+
+# Install packages
+RUN apk add --no-cache \
+    nginx \
+    php84-fpm \
+    php84-session \
+    php84-json \
+    php84-xml \
+    php84-mbstring \
+    php84-zip \
+    php84-gd \
+    php84-curl \
+    php84-opcache \
+    php84-ctype \
+    php84-pdo \
+    php84-pdo_mysql \
+    php84-pdo_pgsql \
+    php84-dom \
+    php84-xmlreader \
+    php84-xmlwriter \
+    php84-tokenizer \
+    php84-soap \
+    php84-fileinfo \
+    php84-simplexml \
+    php84-intl \
+    php84-sodium \
+    php84-exif \
+    php84-pecl-redis \
+    php84-pecl-apcu \
+    supervisor \
+    curl \
+    wget \
+    git \
+    ghostscript \
+    mysql-client
+
+# Create necessary directories and users
+RUN mkdir -p /var/www/html /var/moodledata /run/nginx /run/php \
+    && adduser -D -g 'www' www \
+    && chown -R www:www /var/www /var/moodledata /run/nginx /run/php
+
+# Download and install Moodle
+ARG MOODLE_VERSION=5.0.2
+WORKDIR /var/www
+
+RUN wget -qO- https://github.com/moodle/moodle/archive/refs/tags/v${MOODLE_VERSION}.tar.gz | tar xz \
+    && mv moodle-${MOODLE_VERSION} html \
+    && chown -R www:www /var/www/html /var/moodledata \
+    && chmod -R 755 /var/www/html \
+    && chmod -R 777 /var/moodledata
+
+# Copy configuration files
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY moodle-site.conf /etc/nginx/http.d/default.conf
+COPY php-fpm.conf /etc/php84/php-fpm.d/www.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# PHP Configuration for high performance
+RUN { \
+    echo 'memory_limit=512M'; \
+    echo 'upload_max_filesize=200M'; \
+    echo 'post_max_size=200M'; \
+    echo 'max_execution_time=300'; \
+    echo 'max_input_time=300'; \
+    echo 'max_input_vars=5000'; \
+    echo 'session.gc_maxlifetime=14400'; \
+    echo 'session.save_handler=redis'; \
+    echo 'session.save_path="tcp://redis:6379?auth=${MOODLE_REDIS_PASSWORD}"'; \
+    } >> /etc/php84/php.ini
+
+# OPcache configuration for maximum performance
+RUN { \
+    echo 'opcache.enable=1'; \
+    echo 'opcache.memory_consumption=256'; \
+    echo 'opcache.interned_strings_buffer=16'; \
+    echo 'opcache.max_accelerated_files=20000'; \
+    echo 'opcache.revalidate_freq=60'; \
+    echo 'opcache.fast_shutdown=1'; \
+    echo 'opcache.enable_cli=1'; \
+    echo 'opcache.validate_timestamps=0'; \
+    echo 'opcache.file_cache=/tmp/opcache'; \
+    } >> /etc/php84/conf.d/opcache.ini
+
+# APCu configuration for user cache
+RUN { \
+    echo 'apc.enabled=1'; \
+    echo 'apc.shm_size=128M'; \
+    echo 'apc.ttl=7200'; \
+    echo 'apc.enable_cli=1'; \
+    } >> /etc/php84/conf.d/apcu.ini
+
+# Copy entrypoint script
+COPY docker-entrypoint-nginx.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Create opcache directory
+RUN mkdir -p /tmp/opcache && chown www:www /tmp/opcache
+
+# Environment variables
+ENV MOODLE_DATABASE_TYPE=mariadb \
+    MOODLE_DATABASE_HOST=mariadb \
+    MOODLE_DATABASE_NAME=moodle \
+    MOODLE_DATABASE_USER=moodle \
+    MOODLE_DATABASE_PASSWORD=moodlepassword \
+    MOODLE_DATABASE_PREFIX=mdl_ \
+    MOODLE_ADMIN_USER=admin \
+    MOODLE_ADMIN_PASSWORD=Admin@123456 \
+    MOODLE_ADMIN_EMAIL=admin@example.com \
+    MOODLE_SITE_NAME="Moodle High-Performance" \
+    MOODLE_SITE_URL=http://localhost \
+    MOODLE_DATA_DIR=/var/moodledata \
+    MOODLE_REDIS_HOST=redis \
+    MOODLE_REDIS_PORT=6379 \
+    MOODLE_REDIS_PASSWORD=redis_password
+
+# Expose ports
+EXPOSE 80 443
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost/login/index.php || exit 1
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Run supervisor to manage both nginx and php-fpm
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

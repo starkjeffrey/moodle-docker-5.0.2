@@ -1,0 +1,153 @@
+version: '3.8'
+
+# SLIM VERSION - Using smaller Alpine-based images where possible
+# Note: Moodle still uses Bitnami as no official Alpine version exists
+
+services:
+  redis:
+    # Official Redis Alpine - 30-50MB (vs 100-150MB Bitnami)
+    image: redis:7.2-alpine
+    container_name: moodle-redis-slim
+    restart: unless-stopped
+    command: >
+      redis-server
+      --maxclients 10000
+      --timeout 0
+      --tcp-keepalive 300
+      --tcp-backlog 511
+      --appendonly yes
+      --appendfsync everysec
+      --maxmemory 1gb
+      --maxmemory-policy allkeys-lru
+      --requirepass ${REDIS_PASSWORD:-redis_password_change_me}
+    volumes:
+      - redis_data:/data
+    networks:
+      - moodle-network
+    expose:
+      - "6379"
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+  mariadb:
+    # Official MariaDB Alpine - 100-150MB (vs 400-500MB Bitnami)
+    image: mariadb:11.4-alpine
+    container_name: moodle-mariadb-slim
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password_change_me}
+      MARIADB_DATABASE: moodle
+      MARIADB_USER: moodle_user
+      MARIADB_PASSWORD: ${DB_PASSWORD:-moodle_password_change_me}
+      MARIADB_CHARACTER_SET: utf8mb4
+      MARIADB_COLLATE: utf8mb4_unicode_ci
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d:ro
+    networks:
+      - moodle-network
+    expose:
+      - "3306"
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  moodle:
+    # Still using Bitnami (no official Alpine version)
+    # But using registry.hub.docker.com for better speed
+    image: registry.hub.docker.com/bitnami/moodle:5.0.2
+    container_name: moodle-app-slim
+    restart: unless-stopped
+    environment:
+      # Database
+      MOODLE_DATABASE_TYPE: mariadb
+      MOODLE_DATABASE_HOST: mariadb
+      MOODLE_DATABASE_PORT_NUMBER: 3306
+      MOODLE_DATABASE_NAME: moodle
+      MOODLE_DATABASE_USER: moodle_user
+      MOODLE_DATABASE_PASSWORD: ${DB_PASSWORD:-moodle_password_change_me}
+
+      # Redis
+      MOODLE_REDIS_HOST: redis
+      MOODLE_REDIS_PORT_NUMBER: 6379
+      MOODLE_REDIS_PASSWORD: ${REDIS_PASSWORD:-redis_password_change_me}
+
+      # Admin
+      MOODLE_USERNAME: admin
+      MOODLE_PASSWORD: ${ADMIN_PASSWORD:-Admin@123456}
+      MOODLE_EMAIL: admin@example.com
+      MOODLE_SITE_NAME: "Moodle High-Performance Platform"
+
+      # Performance
+      PHP_MEMORY_LIMIT: 512M
+      PHP_MAX_EXECUTION_TIME: 300
+      PHP_POST_MAX_SIZE: 200M
+      PHP_UPLOAD_MAX_FILESIZE: 200M
+      PHP_MAX_INPUT_VARS: 5000
+      PHP_OPCACHE_ENABLE: 1
+      PHP_OPCACHE_MEMORY_CONSUMPTION: 256
+      PHP_OPCACHE_MAX_ACCELERATED_FILES: 10000
+    volumes:
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8443:8443"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - moodle-network
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f http://localhost:8080/ || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 512M
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  moodle-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: br_moodle_slim
