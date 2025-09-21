@@ -117,6 +117,13 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
 
 # ===========================
+# Production stage
+# ===========================
+FROM base AS production
+# Production optimizations
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# ===========================
 # Alpine-based slim version
 # ===========================
 FROM alpine:3.19 AS moodle-alpine
