@@ -1,24 +1,24 @@
 services:
   mariadb:
-    image: registry.hub.docker.com/bitnami/mariadb:11.4
+    image: mariadb:11.4
     container_name: moodle-mariadb
     restart: unless-stopped
     env_file:
       - .envs/.mariadb/mariadb.env
     volumes:
-      - mariadb_data:/bitnami/mariadb
+      - mariadb_data:/var/lib/mysql
     networks:
       - moodle-network
     ports:
       - "3306:3306"
     healthcheck:
-      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
       interval: 15s
       timeout: 5s
       retries: 6
 
   moodle:
-    image: registry.hub.docker.com/bitnami/moodle:5.0.2
+    image: naga_moodle_php84:latest
     container_name: moodle-app
     restart: unless-stopped
     env_file:

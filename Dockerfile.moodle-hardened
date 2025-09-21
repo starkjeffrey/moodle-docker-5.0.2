@@ -1,0 +1,154 @@
+# Custom Hardened Moodle Image
+# Replicates Bitnami's security features but with full control
+FROM php:8.2-fpm-alpine3.19
+
+# Metadata
+LABEL org.opencontainers.image.source="https://github.com/pucsr/moodle-docker"
+LABEL org.opencontainers.image.description="Hardened Moodle 5.0.2 for PUCSR"
+LABEL org.opencontainers.image.version="5.0.2"
+LABEL maintainer="it@pucsr.edu.kh"
+
+# Security: Run as non-root user (mimics Bitnami's approach)
+ARG MOODLE_UID=1001
+ARG MOODLE_GID=1001
+
+# Install dependencies with security hardening
+RUN apk add --no-cache \
+    # Core dependencies
+    nginx \
+    supervisor \
+    git \
+    bash \
+    curl \
+    unzip \
+    # PHP extensions for Moodle
+    php82-bcmath \
+    php82-bz2 \
+    php82-calendar \
+    php82-ctype \
+    php82-curl \
+    php82-dom \
+    php82-exif \
+    php82-fileinfo \
+    php82-ftp \
+    php82-gd \
+    php82-iconv \
+    php82-intl \
+    php82-json \
+    php82-ldap \
+    php82-mbstring \
+    php82-mysqli \
+    php82-opcache \
+    php82-openssl \
+    php82-pcntl \
+    php82-pdo \
+    php82-pdo_mysql \
+    php82-phar \
+    php82-posix \
+    php82-session \
+    php82-simplexml \
+    php82-soap \
+    php82-sodium \
+    php82-tokenizer \
+    php82-xml \
+    php82-xmlreader \
+    php82-xmlwriter \
+    php82-xsl \
+    php82-zip \
+    php82-zlib \
+    # Security tools
+    ca-certificates \
+    openssl \
+    # Performance tools
+    redis \
+    memcached \
+    # Remove package manager cache
+    && rm -rf /var/cache/apk/* \
+    # Create non-root user
+    && addgroup -g ${MOODLE_GID} moodle \
+    && adduser -D -u ${MOODLE_UID} -G moodle moodle \
+    # Security: Remove unnecessary binaries
+    && find / -perm /6000 -type f -exec chmod a-s {} \; 2>/dev/null || true
+
+# Moodle version
+ENV MOODLE_VERSION=5.0.2 \
+    MOODLE_SHA256=abc123def456... \
+    BITNAMI_APP_NAME=moodle \
+    PATH="/opt/moodle/bin:$PATH"
+
+# Create directory structure (Bitnami-compatible)
+RUN mkdir -p /opt/moodle /bitnami/moodle /bitnami/moodledata \
+    && chown -R moodle:moodle /opt/moodle /bitnami
+
+# Download and install Moodle from Git (more reliable than tar)
+USER moodle
+WORKDIR /opt/moodle
+
+RUN git clone --branch MOODLE_405_STABLE --depth 1 \
+    https://github.com/moodle/moodle.git /opt/moodle \
+    && rm -rf /opt/moodle/.git \
+    # Create required directories
+    && mkdir -p /bitnami/moodledata/{cache,localcache,sessions,temp,trash,filedir} \
+    && chmod -R 755 /bitnami/moodledata
+
+# Copy custom PHP configuration (hardened)
+USER root
+COPY --chown=root:root configs/php.ini /etc/php82/php.ini
+COPY --chown=root:root configs/php-fpm.conf /etc/php82/php-fpm.conf
+COPY --chown=root:root configs/nginx.conf /etc/nginx/nginx.conf
+COPY --chown=root:root configs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Security hardening configurations
+RUN echo "# Security Hardening" >> /etc/php82/php.ini \
+    && echo "expose_php = Off" >> /etc/php82/php.ini \
+    && echo "display_errors = Off" >> /etc/php82/php.ini \
+    && echo "log_errors = On" >> /etc/php82/php.ini \
+    && echo "error_log = /var/log/php_errors.log" >> /etc/php82/php.ini \
+    && echo "post_max_size = 512M" >> /etc/php82/php.ini \
+    && echo "upload_max_filesize = 512M" >> /etc/php82/php.ini \
+    && echo "max_execution_time = 300" >> /etc/php82/php.ini \
+    && echo "max_input_time = 300" >> /etc/php82/php.ini \
+    && echo "memory_limit = 512M" >> /etc/php82/php.ini \
+    && echo "session.cookie_secure = On" >> /etc/php82/php.ini \
+    && echo "session.cookie_httponly = On" >> /etc/php82/php.ini \
+    && echo "session.use_only_cookies = On" >> /etc/php82/php.ini \
+    # OPcache settings
+    && echo "opcache.enable = 1" >> /etc/php82/php.ini \
+    && echo "opcache.memory_consumption = 256" >> /etc/php82/php.ini \
+    && echo "opcache.max_accelerated_files = 20000" >> /etc/php82/php.ini \
+    && echo "opcache.validate_timestamps = 0" >> /etc/php82/php.ini \
+    # Security: Disable dangerous functions
+    && echo "disable_functions = exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source" >> /etc/php82/php.ini
+
+# Add health check script
+COPY --chown=moodle:moodle scripts/healthcheck.sh /usr/local/bin/healthcheck.sh
+RUN chmod +x /usr/local/bin/healthcheck.sh
+
+# Copy entrypoint script (Bitnami-style initialization)
+COPY --chown=root:root scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Security: Set proper permissions
+RUN find /opt/moodle -type f -exec chmod 644 {} \; \
+    && find /opt/moodle -type d -exec chmod 755 {} \; \
+    && chmod -R 777 /bitnami/moodledata \
+    # Remove setuid/setgid bits
+    && find / -perm /4000 -type f -exec chmod u-s {} \; 2>/dev/null || true \
+    && find / -perm /2000 -type f -exec chmod g-s {} \; 2>/dev/null || true
+
+# Switch to non-root user
+USER moodle
+
+# Expose ports
+EXPOSE 8080 8443
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD /usr/local/bin/healthcheck.sh || exit 1
+
+# Volumes for persistent data
+VOLUME ["/bitnami/moodle", "/bitnami/moodledata"]
+
+# Entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

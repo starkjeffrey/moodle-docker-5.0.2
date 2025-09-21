@@ -1,0 +1,72 @@
+version: '3.8'
+
+# Legacy Moodle environment for backward compatibility testing
+# Uses older Moodle version for migration testing
+
+services:
+  mariadb-legacy:
+    image: mariadb:10.6
+    container_name: moodle-mariadb-legacy
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: legacy_root_pass
+      MARIADB_DATABASE: moodle_legacy
+      MARIADB_USER: moodle_legacy
+      MARIADB_PASSWORD: legacy_pass_2023
+      MARIADB_CHARACTER_SET: utf8mb4
+      MARIADB_COLLATE: utf8mb4_unicode_ci
+    volumes:
+      - mariadb_legacy_data:/var/lib/mysql
+    networks:
+      - moodle-legacy-network
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  moodle-legacy:
+    image: bitnami/moodle:4.3.5  # Previous LTS version
+    container_name: moodle-app-legacy
+    restart: unless-stopped
+    environment:
+      MOODLE_DATABASE_HOST: mariadb-legacy
+      MOODLE_DATABASE_PORT_NUMBER: 3306
+      MOODLE_DATABASE_NAME: moodle_legacy
+      MOODLE_DATABASE_USER: moodle_legacy
+      MOODLE_DATABASE_PASSWORD: legacy_pass_2023
+      MOODLE_USERNAME: admin
+      MOODLE_PASSWORD: Legacy@2023!
+      MOODLE_EMAIL: legacy@pucsr.edu.kh
+      MOODLE_SITE_NAME: "PUCSR Legacy Moodle"
+      MOODLE_SKIP_BOOTSTRAP: no
+      PHP_MEMORY_LIMIT: 256M
+      PHP_MAX_EXECUTION_TIME: 300
+    volumes:
+      - moodle_legacy_data:/bitnami/moodle
+      - moodledata_legacy_data:/bitnami/moodledata
+    ports:
+      - "8081:8080"
+      - "8444:8443"
+    depends_on:
+      mariadb-legacy:
+        condition: service_healthy
+    networks:
+      - moodle-legacy-network
+
+volumes:
+  mariadb_legacy_data:
+    driver: local
+  moodle_legacy_data:
+    driver: local
+  moodledata_legacy_data:
+    driver: local
+
+networks:
+  moodle-legacy-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/24

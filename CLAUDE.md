@@ -12,22 +12,22 @@ This is a Dockerized Moodle 5.0.2 Learning Management System setup using Bitnami
 
 ```bash
 # Start standard Moodle setup
-docker-compose -f docker-compose.moodle.yml up -d
+docker compose -f docker-compose.moodle.yml up -d
 
 # Start high-concurrency setup with Redis
-docker-compose -f docker-compose.moodle-hardened.yml up -d
+docker compose -f docker-compose.moodle-hardened.yml up -d
 
 # Start slim/lightweight setup (uses Alpine images where possible)
-docker-compose -f docker-compose.moodle-slim.yml up -d
+docker compose -f docker-compose.moodle-slim.yml up -d
 
 # View logs
-docker-compose -f docker-compose.moodle.yml logs -f
+docker compose -f docker-compose.moodle.yml logs -f
 
 # Stop services
-docker-compose -f docker-compose.moodle.yml down
+docker ocmpose -f docker-compose.moodle.yml down
 
 # Remove all data (careful!)
-docker-compose -f docker-compose.moodle.yml down -v
+docker compose -f docker-compose.moodle.yml down -v
 ```
 
 ### Database Operations
