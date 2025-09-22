@@ -1,5 +1,5 @@
 # Multi-stage build for optimized Moodle image
-FROM php:8.4-apache AS base
+FROM php:8.2-apache AS base
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

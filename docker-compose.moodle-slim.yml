@@ -1,43 +1,8 @@
+
 # SLIM VERSION - Using smaller Alpine-based images where possible
 # Note: Moodle still uses Bitnami as no official Alpine version exists
 
 services:
-  # CSS/SCSS Build Service (one-time build)
-  css-builder:
-    image: node:20-alpine
-    container_name: moodle-css-builder
-    working_dir: /app
-    volumes:
-      - ./.envs/theme:/app/theme:ro
-      - ./volumes/moodle/theme:/app/output
-    command: >
-      sh -c "
-        npm install -g sass &&
-        echo 'Building SCSS files...' &&
-        sass --style=compressed --no-source-map /app/theme/pucsr/scss/pucsr.scss:/app/output/pucsr/css/pucsr.css &&
-        sass --style=compressed --no-source-map /app/theme/pucsr-boost/scss/preset/default.scss:/app/output/pucsr-boost/css/default.css &&
-        echo 'CSS build completed!'
-      "
-    profiles:
-      - build
-
-  # CSS/SCSS Watch Service (for development)
-  css-watcher:
-    image: node:20-alpine
-    container_name: moodle-css-watcher
-    working_dir: /app
-    volumes:
-      - ./.envs/theme:/app/theme:ro
-      - ./volumes/moodle/theme:/app/output
-    command: >
-      sh -c "
-        npm install -g sass &&
-        echo 'Watching SCSS files for changes...' &&
-        sass --watch --style=compressed --no-source-map /app/theme:/app/output
-      "
-    profiles:
-      - dev
-
   redis:
     # Official Redis Alpine - 30-50MB (vs 100-150MB Bitnami)
     image: redis:8.2-alpine
@@ -94,7 +59,7 @@ services:
     expose:
       - "3306"
     healthcheck:
-      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      test: ['CMD', '/opt/bitnami/mariadb/bin/mariadb-admin', 'ping', '-h', 'localhost']
       interval: 15s
       timeout: 5s
       retries: 6
@@ -108,17 +73,9 @@ services:
           memory: 256M
 
   moodle:
-    # Build custom Moodle image with different targets:
-    # - production: Standard PHP/Apache image (default)
-    # - moodle-alpine: Lightweight Alpine-based image
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: production  # Change to 'moodle-alpine' for Alpine version
-      args:
-        MOODLE_VERSION: 5.0.2
-    # Fallback to Bitnami image if build is not used
-    # image: registry.hub.docker.com/bitnami/moodle:5.0.2
+    # Still using Bitnami (no official Alpine version)
+    # But using registry.hub.docker.com for better speed
+    image: registry.hub.docker.com/bitnami/moodle:5.0.2
     container_name: moodle-app-slim
     restart: unless-stopped
     environment:
@@ -140,7 +97,6 @@ services:
       MOODLE_PASSWORD: ${ADMIN_PASSWORD:-Admin@123456}
       MOODLE_EMAIL: admin@example.com
       MOODLE_SITE_NAME: "Moodle High-Performance Platform"
-      MOODLE_HOST: moodle.pucsr.edu.kh
 
       # Performance
       PHP_MEMORY_LIMIT: 512M
@@ -155,8 +111,8 @@ services:
       - moodle_data:/bitnami/moodle
       - moodledata_data:/bitnami/moodledata
     ports:
-      - "80:8080"
-      - "443:8443"
+      - "0.0.0.0:80:8080"
+      - "0.0.0.0:443:8443"
     depends_on:
       mariadb:
         condition: service_healthy
