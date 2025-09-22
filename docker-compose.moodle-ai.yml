@@ -1,0 +1,113 @@
+services:
+  mariadb:
+    image: bitnami/mariadb:11.4
+    container_name: moodle-mariadb
+    restart: unless-stopped
+    env_file:
+      - .envs/.mariadb/mariadb.env
+    environment:
+      - MARIADB_CHARACTER_SET=utf8mb4
+      - MARIADB_COLLATE=utf8mb4_unicode_ci
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+    networks:
+      - moodle-network
+    expose:
+      - "3306"
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  moodle:
+    image: bitnami/moodle:5.0.2
+    container_name: moodle-app
+    restart: unless-stopped
+    env_file:
+      - .envs/.moodle/moodle.env
+    environment:
+      - MOODLE_DATABASE_HOST=mariadb
+      - MOODLE_DATABASE_PORT_NUMBER=3306
+      - MOODLE_DATABASE_NAME=bitnami_moodle
+      - MOODLE_DATABASE_USER=bn_moodle
+    volumes:
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
+    ports:
+      - "80:8080"
+      - "443:8443"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - moodle-network
+    healthcheck:
+      test: ['CMD-SHELL', 'php -r "exit(file_get_contents(\"http://localhost:8080/\") ? 0 : 1);"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - moodle-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:11434/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  litellm:
+    image: ghcr.io/berriai/litellm:latest
+    container_name: litellm
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      - LITELLM_LOG=info
+    command:
+      [
+        "--host", "0.0.0.0",
+        "--port", "4000",
+        "--num_threads", "8",
+        "--model", "openai/qwen2-7b-instruct",
+        "--adapter", "ollama",
+        "--ollama_base_url", "http://ollama:11434"
+      ]
+    depends_on:
+      - ollama
+    networks:
+      - moodle-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
+  ollama:
+    driver: local
+
+networks:
+  moodle-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: br_moodle_ai
