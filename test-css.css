@@ -1,0 +1,14 @@
+/* Simple test CSS - if this works, you'll see a red background */
+body {
+    background: red !important;
+}
+
+/* Alternative test - make navbar green */
+.navbar {
+    background: green !important;
+}
+
+/* Another test - make all text blue */
+h1, h2, h3 {
+    color: blue !important;
+}

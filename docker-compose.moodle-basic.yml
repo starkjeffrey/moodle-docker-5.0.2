@@ -1,0 +1,75 @@
+services:
+  mariadb:
+    image: registry.hub.docker.com/bitnami/mariadb:11.4
+    container_name: moodle-mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root_password_change_me
+      MARIADB_DATABASE: bitnami_moodle
+      MARIADB_USER: bn_moodle
+      MARIADB_PASSWORD: moodle_password
+      MARIADB_CHARACTER_SET: utf8mb4
+      MARIADB_COLLATE: utf8mb4_unicode_ci
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+    networks:
+      - moodle-network
+    expose:
+      - "3306"
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+  moodle:
+    image: registry.hub.docker.com/bitnami/moodle:5.0.2
+    container_name: moodle-app
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    environment:
+      MOODLE_DATABASE_TYPE: mariadb
+      MOODLE_DATABASE_HOST: mariadb
+      MOODLE_DATABASE_PORT_NUMBER: 3306
+      MOODLE_DATABASE_NAME: bitnami_moodle
+      MOODLE_DATABASE_USER: bn_moodle
+      MOODLE_DATABASE_PASSWORD: moodle_password
+      MOODLE_USERNAME: admin
+      MOODLE_PASSWORD: Admin@123456
+      MOODLE_EMAIL: admin@example.com
+      MOODLE_SITE_NAME: Modern Moodle Platform
+      MOODLE_HOST: localhost
+      MOODLE_SKIP_BOOTSTRAP: no
+      MOODLE_LANG: en
+      PHP_MEMORY_LIMIT: 512M
+      PHP_MAX_EXECUTION_TIME: 300
+      PHP_POST_MAX_SIZE: 200M
+      PHP_UPLOAD_MAX_FILESIZE: 200M
+    volumes:
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
+    networks:
+      - moodle-network
+    ports:
+      - "80:8080"
+      - "443:8443"
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8080/admin/tool/health/index.php']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  moodle-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local

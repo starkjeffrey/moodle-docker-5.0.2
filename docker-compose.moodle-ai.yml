@@ -31,6 +31,7 @@ services:
       - MOODLE_DATABASE_PORT_NUMBER=3306
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - MOODLE_DATABASE_USER=bn_moodle
+      - MOODLE_DATABASE_PASSWORD=moodle_password
     volumes:
       - moodle_data:/bitnami/moodle
       - moodledata_data:/bitnami/moodledata
@@ -74,17 +75,18 @@ services:
     restart: unless-stopped
     ports:
       - "4000:4000"
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml
     environment:
       - LITELLM_LOG=info
     command:
-      [
-        "--host", "0.0.0.0",
-        "--port", "4000",
-        "--num_threads", "8",
-        "--model", "openai/qwen2-7b-instruct",
-        "--adapter", "ollama",
-        "--ollama_base_url", "http://ollama:11434"
-      ]
+      - litellm
+      - --file
+      - /app/config.yaml
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "4000"
     depends_on:
       - ollama
     networks:

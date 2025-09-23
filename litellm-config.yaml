@@ -1,0 +1,16 @@
+model_list:
+  - model_name: qwen2-0.5b
+    litellm_params:
+      model: ollama/qwen2:0.5b
+      api_base: http://ollama:11434
+
+general_settings:
+  master_key: sk-1234
+  database_url: null
+
+litellm_settings:
+  telemetry: false
+  success_callback: null
+  failure_callback: null
+  drop_params: true
+  set_verbose: false
