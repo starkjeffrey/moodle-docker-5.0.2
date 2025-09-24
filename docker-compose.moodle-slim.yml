@@ -112,6 +112,7 @@ services:
       - moodledata_data:/bitnami/moodledata
       - ./.envs/theme/pucsr:/bitnami/moodle/theme/pucsr
       - ./.envs/theme/pucsr-boost:/bitnami/moodle/theme/pucsr-boost
+      - ./modernboost:/bitnami/moodle/theme/modernboost
     ports:
       - "0.0.0.0:80:8080"
       - "0.0.0.0:443:8443"

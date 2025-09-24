@@ -1,0 +1,35 @@
+// Modern Color Palette
+$primary: #6366f1 !default;
+$secondary: #ec4899 !default;
+$success: #10b981 !default;
+$info: #0ea5e9 !default;
+$warning: #f59e0b !default;
+$danger: #ef4444 !default;
+$light: #f9fafb !default;
+$dark: #111827 !default;
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$gradient-hero: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+
+// Typography
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$headings-font-family: 'Poppins', $font-family-base;
+$headings-font-weight: 600;
+
+// Spacing
+$spacer: 1rem;
+$border-radius: 0.75rem;
+$border-radius-lg: 1rem;
+$border-radius-sm: 0.5rem;
+$card-border-radius: $border-radius-lg;
+
+// Shadows
+$box-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Import Bootstrap and Boost
+@import "../../boost/scss/preset/default";
+@import "../../boost/scss/moodle";
