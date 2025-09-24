@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/pucsr_api/db" VERSION="2025012400" COMMENT="XMLDB file for Moodle local/pucsr_api plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_pucsr_api_sync_log" COMMENT="Logs SIS synchronization events">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="sync_type" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="Type of sync: grades, enrollments, users"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Course ID if sync is course-specific"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="User ID if sync is user-specific"/>
+        <FIELD NAME="direction" TYPE="char" LENGTH="10" NOTNULL="true" COMMENT="push or pull"/>
+        <FIELD NAME="records_processed" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="records_success" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="records_failed" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="success, failed, partial"/>
+        <FIELD NAME="error_message" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="sync_data" TYPE="text" NOTNULL="false" COMMENT="JSON data for sync details"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+        <KEY NAME="userid" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="sync_type_idx" UNIQUE="false" FIELDS="sync_type"/>
+        <INDEX NAME="status_idx" UNIQUE="false" FIELDS="status"/>
+        <INDEX NAME="timecreated_idx" UNIQUE="false" FIELDS="timecreated"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="local_pucsr_api_sis_mapping" COMMENT="Maps Moodle entities to SIS identifiers">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="entity_type" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="user, course, category"/>
+        <FIELD NAME="moodle_id" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Moodle entity ID"/>
+        <FIELD NAME="sis_id" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="SIS identifier"/>
+        <FIELD NAME="sis_code" TYPE="char" LENGTH="50" NOTNULL="false" COMMENT="SIS course code or user code"/>
+        <FIELD NAME="active" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="entity_moodle_idx" UNIQUE="true" FIELDS="entity_type,moodle_id"/>
+        <INDEX NAME="entity_sis_idx" UNIQUE="true" FIELDS="entity_type,sis_id"/>
+        <INDEX NAME="sis_code_idx" UNIQUE="false" FIELDS="sis_code"/>
+        <INDEX NAME="active_idx" UNIQUE="false" FIELDS="active"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="local_pucsr_api_composite_config" COMMENT="Configuration for composite grade structures">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="main_category_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="structure_name" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="e.g., IEAP-4"/>
+        <FIELD NAME="config_data" TYPE="text" NOTNULL="true" COMMENT="JSON configuration for structure"/>
+        <FIELD NAME="active" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1"/>
+        <FIELD NAME="created_by" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+        <KEY NAME="main_category_id" TYPE="foreign" FIELDS="main_category_id" REFTABLE="grade_categories" REFFIELDS="id"/>
+        <KEY NAME="created_by" TYPE="foreign" FIELDS="created_by" REFTABLE="user" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="courseid_active_idx" UNIQUE="false" FIELDS="courseid,active"/>
+        <INDEX NAME="structure_name_idx" UNIQUE="false" FIELDS="structure_name"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

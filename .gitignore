@@ -1,5 +1,8 @@
-# Docker volumes
+# Docker volumes (but allow source code plugins)
 volumes/
+!volumes/moodle/
+!volumes/moodle/local/
+!volumes/moodle/local/**
 mariadb_data/
 moodle_data/
 moodledata_data/
