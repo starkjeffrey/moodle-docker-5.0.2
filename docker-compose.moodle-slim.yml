@@ -110,6 +110,8 @@ services:
     volumes:
       - moodle_data:/bitnami/moodle
       - moodledata_data:/bitnami/moodledata
+      - ./.envs/theme/pucsr:/bitnami/moodle/theme/pucsr
+      - ./.envs/theme/pucsr-boost:/bitnami/moodle/theme/pucsr-boost
     ports:
       - "0.0.0.0:80:8080"
       - "0.0.0.0:443:8443"
