@@ -45,10 +45,10 @@ services:
     container_name: moodle-mariadb-slim
     restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password_change_me}
-      MARIADB_DATABASE: moodle
-      MARIADB_USER: moodle_user
-      MARIADB_PASSWORD: ${DB_PASSWORD:-moodle_password_change_me}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password}
+      MARIADB_DATABASE: bitnami_moodle
+      MARIADB_USER: bn_moodle
+      MARIADB_PASSWORD: ${DB_PASSWORD:-moodle_password}
       MARIADB_CHARACTER_SET: utf8mb4
       MARIADB_COLLATE: utf8mb4_unicode_ci
     volumes:
@@ -83,9 +83,9 @@ services:
       MOODLE_DATABASE_TYPE: mariadb
       MOODLE_DATABASE_HOST: mariadb
       MOODLE_DATABASE_PORT_NUMBER: 3306
-      MOODLE_DATABASE_NAME: moodle
-      MOODLE_DATABASE_USER: moodle_user
-      MOODLE_DATABASE_PASSWORD: ${DB_PASSWORD:-moodle_password_change_me}
+      MOODLE_DATABASE_NAME: bitnami_moodle
+      MOODLE_DATABASE_USER: bn_moodle
+      MOODLE_DATABASE_PASSWORD: ${DB_PASSWORD:-moodle_password}
 
       # Redis
       MOODLE_REDIS_HOST: redis
