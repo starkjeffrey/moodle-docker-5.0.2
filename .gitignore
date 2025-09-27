@@ -35,4 +35,4 @@ logs/
 # Temporary files
 *.tmp
 tmp/
-temp/
+temp/data/*.sql.gz

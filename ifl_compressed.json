@@ -1,0 +1,1273 @@
+[
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 1,
+    "compressed_text": "intro",
+    "id": "id",
+    "name": "name",
+    "original_size": "original_size"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true,
+      "topic_sentence": true
+    },
+    "word_count": 62,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to describe the place where you live. What do you like or dislike about it?Use specific details and adjectives to explain your answers. Make sure to or",
+    "id": "379",
+    "name": "FINAL EXAM Part I (Writing) ",
+    "original_size": "1877"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true,
+      "topic_sentence": true
+    },
+    "word_count": 285,
+    "compressed_text": "Now is your chance to practice writing your first short essay before your exam on Monday the 7th. I want you to write a 3 paragraph essay that....1. Describe your favorite food; Think of these questio",
+    "id": "3880",
+    "name": "Descriptive Short Essay Practice.",
+    "original_size": "1750"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 8,
+    "compressed_text": "Write a short paragraph of at least 10",
+    "id": "1041",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1720"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 8,
+    "compressed_text": "Write a short paragraph of at least 10",
+    "id": "1206",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1720"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 8,
+    "compressed_text": "Write a short paragraph of at least 10",
+    "id": "1777",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1720"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true,
+      "topic_sentence": true
+    },
+    "word_count": 124,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to describe the place where you live. What do you like or dislike about it?Use specific details and adjectives to explain your answers. Make sure to or",
+    "id": "1062",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1667"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 9,
+    "compressed_text": "WRITING EXERCISE \u2013 You have 60 minutes to write",
+    "id": "335",
+    "name": "4a: QUIZ \u2013 WRITING A PROCESS PARAGRAPH (for SCORES)",
+    "original_size": "1603"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "essay_writing": true
+    },
+    "word_count": 90,
+    "compressed_text": "You are going to write a descriptive essay about your favorite food. First, you must write out a brainstorming activity and an essay outline. Please follow the instructions below. On your own note boo",
+    "id": "1335",
+    "name": "Brainstorming and Outline for the Descriptive Essay",
+    "original_size": "1474"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "essay_writing": true
+    },
+    "word_count": 90,
+    "compressed_text": "You are going to write a descriptive essay about your favorite food. First, you must write out a brainstorming activity and an essay outline. Please follow the instructions below. On your own note boo",
+    "id": "1807",
+    "name": "Brainstorming and Outline for the Descriptive Essay",
+    "original_size": "1469"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 9,
+    "compressed_text": "Scores will be given based on the following criteria:",
+    "id": "1611",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1453"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 9,
+    "compressed_text": "Scores will be given based on the following criteria:",
+    "id": "1783",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "1453"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 223,
+    "compressed_text": "Now it is time to write your own compare and contrast essay. You need to pick two places. They can be any places that you want. They can be places you love, or places you want to go to. They can be wh",
+    "id": "3640",
+    "name": "Final EXAM (Essay) ",
+    "original_size": "1428"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 215,
+    "compressed_text": "Ok students, now is the time to show what you have learned about writing short essays. For this essay, you need to write about your favorite place. It can be somewhere you took a holiday with your fam",
+    "id": "3385",
+    "name": "Midterm Part 2 The Short Essay",
+    "original_size": "1405"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 5,
+    "compressed_text": "Write a descriptive paragraph about",
+    "id": "296",
+    "name": "Midterm EXAM: Part 2 ( Writing) ",
+    "original_size": "1339"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "word_count": true
+    },
+    "word_count": 59,
+    "compressed_text": "DIRECTIONS: You have 80 minutes to plan, write, and revise your paragraph. Typically, an effective response will contain a maximum of 150 words.WRITING TASK:Computers and other technologies allow peop",
+    "id": "5467",
+    "name": "MIDTERM EXAM (WRITING)",
+    "original_size": "1288"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 212,
+    "compressed_text": "For this quiz, you will need to write your own short descriptive essay. You can choose any topic you want. If you can't think of one, you can write about one of the following topics. What is your favo",
+    "id": "293",
+    "name": "Mid-term Exam Part 2: Essay ",
+    "original_size": "1287"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true,
+      "supporting_sentences": true
+    },
+    "word_count": 206,
+    "compressed_text": "Now it is time to improve your essay form, and write your first story. You need to think about some experience you had that taught you something. It can be anything you want, or about whatever you wan",
+    "id": "3953",
+    "name": "Write your own Narrative essay.",
+    "original_size": "1284"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 109,
+    "compressed_text": "Write a 5-paragraph essay to show the similarities and differences of an online class and a face-to-face class . Which is better? How? Why?Be well organized following the standard 5-paragraph essay fo",
+    "id": "3487",
+    "name": "EXAM II (ESSAY) ",
+    "original_size": "1157"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 109,
+    "compressed_text": "Write a 5-paragraph essay to show the similarities and differences of an online class and a face-to-face class . Which is better? How? Why?Be well organized following the standard 5-paragraph essay fo",
+    "id": "3781",
+    "name": "EXAM II (ESSAY)",
+    "original_size": "1157"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 169,
+    "compressed_text": "Ok, students. Now it is time to try to write your own descriptive essay. Use the brainstorming exercises from page 32 and 33 to get ideas and descriptive vocabulary, and write a short essay about your",
+    "id": "3337",
+    "name": "Write your own descriptive essay about your favorite food. ",
+    "original_size": "1121"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 186,
+    "compressed_text": "For this quiz, you will need to write your own short essay about your favorite food. DO NOT WRITE A RECIPE, OR HOW TO MAKE IT. Please review the form of the short essay on pages 15-17 and look at the ",
+    "id": "215",
+    "name": "IEAP 3 Unit 2 Quiz",
+    "original_size": "1113"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 18,
+    "compressed_text": "Welcome to Pa\u00f1\u00f1asastra University of CambodiaSiem Reap CampusIntensive English for Academic PurposesWriting Level 4 - The Researched Essay",
+    "id": "13",
+    "name": "Your Moodles are Coming Right Up",
+    "original_size": "1109"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 183,
+    "compressed_text": "Write a narrative essay that tells a story about a time when you learned an important lesson. Don't write about a test you took. Write about something that happened to you in your life. The purpose of",
+    "id": "347",
+    "name": "IEAP 3 Unit 3 Quiz",
+    "original_size": "1075"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 178,
+    "compressed_text": "Write a 5 paragraph short Cause and Effect Essay. We have been learning about causes and effects, and different ways you can write the effects of different causes. You need to think about what you may",
+    "id": "5436",
+    "name": "FINAL EXAM (WRITING)",
+    "original_size": "1041"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true
+    },
+    "word_count": 10,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to",
+    "id": "3064",
+    "name": "Writing ",
+    "original_size": "1023"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true
+    },
+    "word_count": 10,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to",
+    "id": "3763",
+    "name": "Writing",
+    "original_size": "1023"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true
+    },
+    "word_count": 10,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to",
+    "id": "2494",
+    "name": "Writing ( For Morning Class)",
+    "original_size": "1016"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true
+    },
+    "word_count": 10,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to",
+    "id": "2530",
+    "name": "Writing ( For Evening Class)",
+    "original_size": "1016"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 103,
+    "compressed_text": "You must write a 5 Paragraph Descriptive Essay about your Favorite Food.Please follow the examples on pages 34 and 37 of the Academic Writing textbook.You must describe in detail what your favorite fo",
+    "id": "1368",
+    "name": "Your Favorite Food 5 Paragraph Descriptive Essay",
+    "original_size": "996"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 103,
+    "compressed_text": "You must write a 5 Paragraph Descriptive Essay about your Favorite Food.Please follow the examples on pages 34 and 37 of the Academic Writing textbook.You must describe in detail what your favorite fo",
+    "id": "1810",
+    "name": "Your Favorite Food 5 Paragraph Descriptive Essay",
+    "original_size": "990"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 146,
+    "compressed_text": "THIS IS TO BE DONE IN CLASS.YOU CAN PREPARE AN OUTLINE, BUT REMEMBER, THE ONLY COMPLETE SENTENCE THAT CAN BE ON YOUR OUTLINE IS YOUR THESIS STATEMENTWrite a 4 paragraph short essay where you write a n",
+    "id": "5433",
+    "name": "MIDTERM EXAM (WRITING)",
+    "original_size": "972"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "conclusion": true
+    },
+    "word_count": 163,
+    "compressed_text": "Write a descriptive paragraph about your favorite THING that is yours. Don't write about your family. It could be a ring, your phone, your motorbike, a bicycle, a book, a necklace your mother gave you",
+    "id": "716",
+    "name": "Write a descriptive paragraph",
+    "original_size": "967"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 69,
+    "compressed_text": "Some experiences change our lives and form our personalities. Write a narrative essay about an experience that changed you or taught you something important.This essay will have 3 body paragraphs with",
+    "id": "3355",
+    "name": "Write a narrative essay ",
+    "original_size": "956"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 115,
+    "compressed_text": "The first step in academic writing is always brainstorming or free writing. This step is to help you find the best ideas for your essay.You should brainstorm or free writing for 15 minutes about a lif",
+    "id": "1990",
+    "name": "Brainstorming/Free writing Narrative Essay",
+    "original_size": "949"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 92,
+    "compressed_text": "DIRECTIONS: Write a short paragraph of at least 10 sentences to describe a holiday in your country. How do people celebrate the holiday?Why is it a special day? Use specific details and examples to su",
+    "id": "5442",
+    "name": "MIDTERM EXAM (WRITING)",
+    "original_size": "851"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 91,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to describe a holiday in your country. How do people celebrate the holiday?Why is it a special day? Use specific details and examples to support your d",
+    "id": "3938",
+    "name": "Midterm EXAM: Writing",
+    "original_size": "833"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 14,
+    "compressed_text": "Relatives are visiting you from far away.Write a 3-paragraph Descriptive Essay about the place",
+    "id": "3775",
+    "name": "EXAM I: Part II (ESSAY)",
+    "original_size": "831"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 120,
+    "compressed_text": "Choose ONE of the following topics and write a 4-5 paragraph essay.Topics:* Thai movies Khmer movies - compare/contrast movie styles in Cambodia and Thailand. Some ideas: what are the themes popular i",
+    "id": "659",
+    "name": "ESSAY: Comparison-contrast essay",
+    "original_size": "820"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "sentences_requirement": true
+    },
+    "word_count": 10,
+    "compressed_text": "Write a short paragraph of at least 10 sentences to",
+    "id": "3895",
+    "name": "Writing: Unit 2",
+    "original_size": "795"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 91,
+    "compressed_text": "Write a short paragraph to describe a holiday in your country. How do people celebrate the holiday? Why is it a special day? Use specific details and examples to support your description. Make sure: 1",
+    "id": "1446",
+    "name": "Part 2: Writing ",
+    "original_size": "773"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 91,
+    "compressed_text": "Write a short paragraph to describe a holiday in your country. How do people celebrate the holiday? Why is it a special day? Use specific details and examples to support your description. Make sure: 1",
+    "id": "1780",
+    "name": "Part 2: Writing ",
+    "original_size": "773"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "word_count": true
+    },
+    "word_count": 50,
+    "compressed_text": "DIRECTIONS: Read the question below. You have 80 minutes to plan, write, and revise your paragraph. Typically, an effective response will contain a minimum of 150 words.Do you agree or disagree with t",
+    "id": "5470",
+    "name": "FINAL EXAM (WRITING)",
+    "original_size": "769"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 118,
+    "compressed_text": "I want you to write your own comparison-contrast essay. You can pick your own topic, but I want you to pick two things (or places, people, etc.) that you can write well about. Please show what you lea",
+    "id": "391",
+    "name": "IEAP 3 Final Exam Part 2: Essay",
+    "original_size": "718"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 116,
+    "compressed_text": "I want you all to write your own short story (in essay form) where you tell about an experience you had that made you learn something,. Your thesis statement should say a little about what you learned",
+    "id": "3499",
+    "name": "Write your own narrative essay",
+    "original_size": "718"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 13,
+    "compressed_text": "Write six sentences. Use two or more words from the word bank in",
+    "id": "299",
+    "name": "Midterm EXAM: Part 2 (Writing) ",
+    "original_size": "714"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "essay_writing": true
+    },
+    "word_count": 123,
+    "compressed_text": "Please write an outline for your narrative essay you will write for the unit quiz. Please follow the form I have uploaded in the shared drive called '.... EAW outline p.60...' This way you can get pra",
+    "id": "332",
+    "name": "Write an outline for your Narrative Essay",
+    "original_size": "711"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "topic_sentence": true,
+      "conclusion": true
+    },
+    "word_count": 67,
+    "compressed_text": "The second step of academic writing is outlining. In this step you will write a hook, thesis statement, topic sentences, and a concluding sentence.Use the Outline Template attached.For this assignment",
+    "id": "1993",
+    "name": "Outline for Narrative Essay",
+    "original_size": "685"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 33,
+    "compressed_text": "Write a paragraph about a time when someone gave you advice. What did the person tell you? How did the person\u2019s words help you? Use specific details and examples to describe the events.",
+    "id": "2419",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "674"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 33,
+    "compressed_text": "Write a paragraph about a time when someone gave you advice. What did the person tell you? How did the person\u2019s words help you? Use specific details and examples to describe the events.",
+    "id": "3061",
+    "name": "Final EXAM: Part II (Writing) ",
+    "original_size": "674"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 33,
+    "compressed_text": "Write a paragraph about a time when someone gave you advice. What did the person tell you? How did the person\u2019s words help you? Use specific details and examples to describe the events.",
+    "id": "3760",
+    "name": "Final EXAM: Part II (Writing)",
+    "original_size": "674"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 115,
+    "compressed_text": "Write a descriptive paragraph using your brainstorm and ideas from our zoom chat about your favorite food. Remember, this is descriptive writing, so use adjectives and get specific. No general stateme",
+    "id": "176",
+    "name": "Unit 2: Descriptive Writing:  Write a paragraph",
+    "original_size": "673"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 6,
+    "compressed_text": "Write six sentences. Use two or",
+    "id": "866",
+    "name": "Mid-term EXAM-Part II (Writing) ",
+    "original_size": "652"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 65,
+    "compressed_text": "Write a process (How to) paragraph.Describe the steps for choosing an important gift such as a wedding gift.How do you decide what to buy?Where do you go to buy it?Your process paragraph should have a",
+    "id": "4157",
+    "name": "Chapter 4 Process (How To) Paragraph: Unit 4",
+    "original_size": "645"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 63,
+    "compressed_text": "Please brainstorm about two places to compare and contrast.Please see exercise 1 on page 84 of the Academic Writing Textbook. Also, you should read the compare and contrast brainstorm, outline, and es",
+    "id": "2160",
+    "name": "Brainstorming Compare and Contrast ",
+    "original_size": "633"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "topic_sentence": true,
+      "conclusion": true
+    },
+    "word_count": 108,
+    "compressed_text": "Write your own opinion paragraph about where you think is a good place to live. You need to have a good topic sentence with your controlling idea, at least 3 reasons to support your idea (a fact, an e",
+    "id": "1134",
+    "name": "Final Exam Part 2 The Opinion Paragraph",
+    "original_size": "621"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 14,
+    "compressed_text": "Relatives are visiting you from far away.Write a 5-paragraph Descriptive Essay about the place",
+    "id": "3277",
+    "name": "EXAM I: Part II (ESSAY) ",
+    "original_size": "614"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 3,
+    "compressed_text": "Write six sentences.",
+    "id": "1203",
+    "name": "Midterm EXAM: Part 2 (Writing) ",
+    "original_size": "610"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 3,
+    "compressed_text": "Write six sentences.",
+    "id": "1774",
+    "name": "Midterm EXAM: Part 2 (Writing) ",
+    "original_size": "610"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 3,
+    "compressed_text": "Write six sentences.",
+    "id": "842",
+    "name": "Midterm EXAM: Part 2 (Writing) ",
+    "original_size": "603"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 100,
+    "compressed_text": "Do the Exercise 4 on page 143 in your book. Complete the sentences with a place for #2-4. Then write 3 sentences. One with a fact, one with an explanation, and one with an experience to support the op",
+    "id": "1035",
+    "name": "Using reason to support an opinion",
+    "original_size": "581"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 64,
+    "compressed_text": "Please use the outline template attached to outline the compare and contrast essay.Each student must complete the outline template attached by Friday June 4.Each student must complete the compare and ",
+    "id": "2163",
+    "name": "Outline Compare and Contrast Essay",
+    "original_size": "570"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 94,
+    "compressed_text": "Write a paragraph about Cambodia. You can say anything you want. Write it in the form of a paragraph as shown on page 3. But I want you to have a good topic sentence with a strong controlling idea. Th",
+    "id": "623",
+    "name": "Unit 1 Quiz Part 2 Writing a paragraph",
+    "original_size": "564"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 75,
+    "compressed_text": "Practice writing your own introductory paragraph. Food is your topic. You can write whatever you want to about food, but remember to make a strong topic sentence, with a specific controlling idea. Get",
+    "id": "92",
+    "name": "Unit 1 Assessment 2",
+    "original_size": "520"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 84,
+    "compressed_text": "Write a descriptive paragraph about your favorite place to go. Have a GOOD topic sentence, supporting sentences, and a concluding sentence. Use adjectives to describe how the place looks, sounds, feel",
+    "id": "863",
+    "name": "Midterm Part 2 The Descriptive Paragraph",
+    "original_size": "508"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "sentences_requirement": true
+    },
+    "word_count": 60,
+    "compressed_text": "Write at least 20 sentences to describe the place where you live. What do you like or dislike about it? - Use prepositional phrases to describe location. - Use there is and there are with singular and",
+    "id": "3754",
+    "name": "Writing",
+    "original_size": "502"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 88,
+    "compressed_text": "In your book on pages 115, and 116, write a supporting sentence with Sensory or Emotional details for each of the sentences in exercises 4 and 5. Page 115 is Sensory details, and Page 116 is Emotional",
+    "id": "965",
+    "name": "Sensory and Emotional Details",
+    "original_size": "501"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 46,
+    "compressed_text": "Please write a 5 paragraph compare and contrast essay.In Unit 4, we are studying compare and contrast essay.Please follow the books examples and compare and contrast two places.You could compare and c",
+    "id": "2166",
+    "name": "Compare and Contrast Essay Unit 4",
+    "original_size": "461"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 75,
+    "compressed_text": "Write your own narrative paragraph about a challenging situation from your life. Tell your own story, and use at least one sensory detail and at least one emotional detail. You will be graded on form,",
+    "id": "991",
+    "name": "Narrative Paragraph Unit Quiz",
+    "original_size": "455"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 66,
+    "compressed_text": "Write a paragraph about rainy season. The paragraph should have a good topic sentence with a strong controlling idea. Then you should have a least 4 supporting sentences, and a concluding sentence. Th",
+    "id": "467",
+    "name": "Write your first paragraph.  Topic: Rainy Season",
+    "original_size": "445"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 5,
+    "compressed_text": "Write a 5-paragraph cause-and-effect essay:",
+    "id": "917",
+    "name": "Mid-Term Essay",
+    "original_size": "443"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 47,
+    "compressed_text": "Using ONE (1) of the topics from page 102, make an outline (like page 100) for a comparison-contrast essay.1. Hook2. Background information3. Thesis Statement4. Topic controlling idea for Body Paragra",
+    "id": "872",
+    "name": "OUTLINE for Comparison-Contrast Essay",
+    "original_size": "442"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "supporting_sentences": true
+    },
+    "word_count": 5,
+    "compressed_text": "Write two supporting sentences for",
+    "id": "3172",
+    "name": "Exercise: Writing supporting sentences ",
+    "original_size": "432"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "topic_sentence": true,
+      "supporting_sentences": true
+    },
+    "word_count": 47,
+    "compressed_text": "Write two supporting sentences for\\neach topic sentence.1. A few years ago I had a frightening\\nexperience.\\n\\n2. Maintaining a healthy body requires\\nexercise and a balanced diet.\\n\\n3. Many people f",
+    "id": "3772",
+    "name": "Exercise: Writing supporting sentences ",
+    "original_size": "422"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 41,
+    "compressed_text": "Write a 5-paragraph cause-and-effect essay on the subject: \"Effects of the COVID-19 Pandemic on Siem Reap\".The essay should contain an introductory paragraph (with hook, background, and thesis stateme",
+    "id": "1116",
+    "name": "Final Essay",
+    "original_size": "413"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 5,
+    "compressed_text": "Write about the following topic:",
+    "id": "2806",
+    "name": "Final EXAM (Writing) ",
+    "original_size": "406"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 5,
+    "compressed_text": "Write about the following topic:",
+    "id": "2821",
+    "name": "Final EXAM (Writing)  ",
+    "original_size": "406"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 5,
+    "compressed_text": "Write about the following topic:",
+    "id": "3076",
+    "name": "Final EXAM (Writing) ",
+    "original_size": "406"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 46,
+    "compressed_text": "DIRECTIONS: Write an opinion paragraph about the features of a place you would like to live in outside of Siem Reap. Consider a few of these points; entertainment, weather, employment, education, heal",
+    "id": "5448",
+    "name": "FINAL EXAM (WRITING)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9105",
+    "name": "Midterm Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9108",
+    "name": "Final Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9111",
+    "name": "Midterm Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9114",
+    "name": "Final Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9123",
+    "name": "Midterm Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 58,
+    "compressed_text": "Special Note to Writing Teachers:Exam topics have been posted on the LPD Programs (Padlet) page. Please select one of the approved topics listed in the EHSS Writing section on the Padlet. You can choo",
+    "id": "9126",
+    "name": "Final Exam (Written Exam)",
+    "original_size": "398"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 35,
+    "compressed_text": "Write about the following topic:\\n\\nTeachers should be paid\\nmore when their students get high scores on tests. \\n\\nDo you agree or\\ndisagree? \\n\\nGive reasons for your answer and\\ninclude any relevan",
+    "id": "3769",
+    "name": "Final EXAM (Writing) ",
+    "original_size": "397"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 41,
+    "compressed_text": "Write a 5-paragraph cause-and-effect essay on the subject: \"Effects of the COVID-19 Pandemic on Siem Reap\".The essay should contain an introductory paragraph (with hook, background, and thesis stateme",
+    "id": "1119",
+    "name": "Final Essay",
+    "original_size": "392"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 33,
+    "compressed_text": "Write a 5-paragraph comparison-contrast essay on:TOPIC: Traditional learning vs. e-LearningYour paragraph should have an introductory paragraph, 3 body paragraphs, and a concluding paragraph.For infor",
+    "id": "920",
+    "name": "Mid-term Exam - ESSAY",
+    "original_size": "381"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true
+    },
+    "word_count": 60,
+    "compressed_text": "Write a paragraph about what an ideal short vacation would be for you.You have 5 days vacation and enough money. What would you do? Stay at home and go out to eat in a nice restaurant? Take a small tr",
+    "id": "608",
+    "name": "Writing Sample",
+    "original_size": "379"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 36,
+    "compressed_text": "Write a paragraph about this topic:Employers like to hire people who prepare well for job interviews. Describe an effective process, the steps for preparing for a job interview. Use specific details a",
+    "id": "2953",
+    "name": "Make up EXAM (For Kheang Sokim) ",
+    "original_size": "358"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "3070",
+    "name": "EXAM II (Writing)  ",
+    "original_size": "358"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "3766",
+    "name": "EXAM II (Writing)",
+    "original_size": "358"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 32,
+    "compressed_text": "Write a paragraph about this topic:Many people say that happiness comes from helping others. Write about a time when you helped someone. Use specific details and examples to describe your own experien",
+    "id": "3757",
+    "name": "EXAM II (Writing)",
+    "original_size": "353"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "2650",
+    "name": "EXAM (Writing) Morning ",
+    "original_size": "351"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "2710",
+    "name": "EXAM (Writing)  Evening ",
+    "original_size": "351"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "2638",
+    "name": "EXAM II (Writing) ",
+    "original_size": "327"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 3,
+    "compressed_text": "Write a paragraph",
+    "id": "3058",
+    "name": "EXAM II (Writing) ",
+    "original_size": "327"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "sentences_requirement": true
+    },
+    "word_count": 54,
+    "compressed_text": "Please write at least 5 sentences about you. You can write whatever you want. This is a chance for me to see how you write so far. It is important I know where you have trouble so I can help you the b",
+    "id": "413",
+    "name": "Introduction - Writing about you.",
+    "original_size": "301"
+  },
+  {
+    "type": "general",
+    "patterns": {
+      "sentences_requirement": true
+    },
+    "word_count": 54,
+    "compressed_text": "Please write at least 5 sentences about you. You can write whatever you want. This is a chance for me to see how you write so far. It is important I know where you have trouble so I can help you the b",
+    "id": "446",
+    "name": "Introduction - Writing about you.",
+    "original_size": "301"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 0,
+    "compressed_text": "",
+    "id": "385",
+    "name": "FINAL EXAM-PART I (WRITING) ",
+    "original_size": "298"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 15,
+    "compressed_text": "Use the chart at the bottom of page 98 and write each quotation properly here.",
+    "id": "764",
+    "name": "EXERCISE: Attributing quotes to sources (p. 98)",
+    "original_size": "288"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "essay_writing": true
+    },
+    "word_count": 30,
+    "compressed_text": "Technology can improve lives, but it can also create new problems in society. Write an opinion essay about a controversy involving technology and how it affects individuals, families, and/or society.",
+    "id": "3637",
+    "name": "EXAM III ( Essey) ",
+    "original_size": "279"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "essay_writing": true
+    },
+    "word_count": 30,
+    "compressed_text": "Technology can improve lives, but it can also create new problems in society. Write an opinion essay about a controversy involving technology and how it affects individuals, families, and/or society.",
+    "id": "3784",
+    "name": "EXAM III ( Essey) ",
+    "original_size": "279"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 6,
+    "compressed_text": "Write a 4-5 paragraph descriptive essay.",
+    "id": "644",
+    "name": "WRITING: Descriptive Essay",
+    "original_size": "259"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 41,
+    "compressed_text": "Write a 5-paragraph essay about the causes of stress in Siem Reap right now. [Please talk about the causes of stress for people in general and not just your own personal stress.]Due by Saturday night,",
+    "id": "722",
+    "name": "ESSAY WRITING: Cause-and-effect Essay",
+    "original_size": "251"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 13,
+    "compressed_text": "Write six sentences. Use two or more words from the word bank in",
+    "id": "2476",
+    "name": "Writing  ( For both morning and evening classes)",
+    "original_size": "239"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 13,
+    "compressed_text": "Write six sentences. Use two or more words from the word bank in",
+    "id": "3055",
+    "name": "Writing  ",
+    "original_size": "239"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 33,
+    "compressed_text": "Write a paragraph about yourself. You can say anything you want, but I want to see how your grammar and sentence structure are now. Try to use your best grammar possible. Good luck.",
+    "id": "3154",
+    "name": "Introduction",
+    "original_size": "234"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true,
+      "topic_sentence": true,
+      "supporting_sentences": true,
+      "conclusion": true
+    },
+    "word_count": 27,
+    "compressed_text": "Write a paragraph, with a good topic sentence, supporting sentences and a concluding sentence. You can choose your own topic, but remember, be specific. Not general statements!",
+    "id": "146",
+    "name": "IEAP Unit1 Quiz Part 2",
+    "original_size": "199"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 22,
+    "compressed_text": "Write a short paragraph about \"your Best Friend's Biography\"- Use the correct form of Present Simple.- Maximum 10 sentences in your paragraph",
+    "id": "464",
+    "name": "Homework",
+    "original_size": "162"
+  },
+  {
+    "type": "essay",
+    "patterns": {
+      "paragraph_writing": true,
+      "essay_writing": true
+    },
+    "word_count": 21,
+    "compressed_text": "Due Saturday, 10 October at 11pm.Write a 5-paragraph narrative essay about ONE of the topics on page 78 in the textbook.",
+    "id": "725",
+    "name": "ESSAY WRITING. Narrative essay.",
+    "original_size": "144"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 0,
+    "compressed_text": "",
+    "id": "773",
+    "name": "Mod 04, Lesson 01 - Vocab ",
+    "original_size": "128"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 0,
+    "compressed_text": "",
+    "id": "8236",
+    "name": "Exam 1 Essay",
+    "original_size": "92"
+  },
+  {
+    "type": "paragraph",
+    "patterns": {
+      "paragraph_writing": true
+    },
+    "word_count": 4,
+    "compressed_text": "Write a paragraph about.....",
+    "id": "3886",
+    "name": "Testing",
+    "original_size": "71"
+  },
+  {
+    "type": "general",
+    "patterns": {},
+    "word_count": 0,
+    "compressed_text": "",
+    "id": "5081",
+    "name": "EXAM 2 (Written Exam)",
+    "original_size": "25"
+  }
+]

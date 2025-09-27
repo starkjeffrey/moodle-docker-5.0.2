@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  mariadb-4-3:
+    image: docker.io/bitnami/mariadb:11.4
+    container_name: moodle-4-3-mariadb
+    env_file:
+      - .envs/.mariadb-4-3/mariadb.env
+    volumes:
+      - mariadb_4_3_data:/bitnami/mariadb
+    ports:
+      - "3307:3306"  # Different port to avoid conflict
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - moodle-4-3-network
+
+  moodle-4-3:
+    image: docker.io/bitnami/moodle:4.3.6  # Latest 4.3.x version
+    container_name: moodle-4-3
+    env_file:
+      - .envs/.moodle-4-3/moodle.env
+    ports:
+      - "8081:8080"   # Different port to avoid conflict with 5.0.2
+      - "8444:8443"   # Different HTTPS port
+    volumes:
+      - moodle_4_3_data:/bitnami/moodle
+      - moodledata_4_3_data:/bitnami/moodledata
+    depends_on:
+      mariadb-4-3:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/login/index.php"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    networks:
+      - moodle-4-3-network
+
+  # Optional Redis for session handling (can be shared or separate)
+  redis-4-3:
+    image: docker.io/bitnami/redis:7.2
+    container_name: moodle-4-3-redis
+    env_file:
+      - .envs/.redis-4-3/redis.env
+    volumes:
+      - redis_4_3_data:/bitnami/redis/data
+    ports:
+      - "6380:6379"  # Different port to avoid conflict
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - moodle-4-3-network
+
+networks:
+  moodle-4-3-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24  # Different subnet from other networks
+
+volumes:
+  mariadb_4_3_data:
+    driver: local
+  moodle_4_3_data:
+    driver: local
+  moodledata_4_3_data:
+    driver: local
+  redis_4_3_data:
+    driver: local
